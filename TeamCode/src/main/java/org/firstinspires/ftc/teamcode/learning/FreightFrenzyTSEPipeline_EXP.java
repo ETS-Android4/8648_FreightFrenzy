@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode.learning;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.enums.Alliance;
 import org.firstinspires.ftc.teamcode.enums.Barcode;
@@ -19,7 +21,6 @@ import org.openftc.easyopencv.OpenCvPipeline;
 // half of the trajectories to make a common starting point relative to the barcodes.
 // In this case the robot always starts in front of the two barcodes closest the alliance hub.
 // Enums are passed to the pipeline to manage the starting configs easily.
-
 
 public class FreightFrenzyTSEPipeline_EXP extends OpenCvPipeline{
     Telemetry telemetry;
