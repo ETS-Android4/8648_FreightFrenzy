@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.opencv;
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -12,7 +13,7 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 
 @Config
-@Autonomous(name="OpenCV_Test", group="Tutorials")
+@TeleOp(name="OpenCV_Test", group="Tutorials")
 
 public class OpenCV_Tutorial_Freight_Frenzy extends LinearOpMode {
 
@@ -103,6 +104,7 @@ public class OpenCV_Tutorial_Freight_Frenzy extends LinearOpMode {
 
             telemetry.update();
         }
+
     }
     public void testing(ContourPipeline pipeline){
         if(lowerRuntime + 0.05 < getRuntime()){
