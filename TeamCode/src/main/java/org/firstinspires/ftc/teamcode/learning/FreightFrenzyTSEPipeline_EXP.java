@@ -25,23 +25,23 @@ import org.openftc.easyopencv.OpenCvPipeline;
 public class FreightFrenzyTSEPipeline_EXP extends OpenCvPipeline{
     Telemetry telemetry;
     Mat mat = new Mat(); // Mat is a matrix
-    Barcode barcode = Barcode.RIGHT; // Default target zone
+    Barcode barcode = Barcode.LEFT; // Default target zone
     Alliance alliance;
     StartSide startside;
-
 
     static double PERCENT_COLOR_THRESHOLD = 0.4;
 
     // telemetry is part of a LinearOpmde. Since this pipeline does not extend a LinearOpmode
     // telemetry has to be added in the constructor for SkystonePipeline to be able to use it.
-
     // Constructor
     public FreightFrenzyTSEPipeline_EXP(Telemetry t, Alliance a, StartSide s) {
         telemetry = t;
         alliance = a;
         startside = s;
-
     }
+
+
+
     @Override
     public Mat processFrame(Mat input) {
         Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV); // converting RGB to HSV color scheme
@@ -97,8 +97,8 @@ public class FreightFrenzyTSEPipeline_EXP extends OpenCvPipeline{
         }
         // Use a webcam and the GRIP software to tune these values off the robot. It will save a lot of time.
         // GRIP is a free download.
-        Scalar lowHSV = new Scalar(69, 59,  57); // for cyan smaller H allows more green
-        Scalar highHSV = new Scalar(104, 300, 179); // for cyan larger H allows more blue. If too much blue is allowed the blue floor tape is detected.
+        Scalar lowHSV = new Scalar(0, 62,  0); // for cyan smaller H allows more green
+        Scalar highHSV = new Scalar(91, 255, 140); // ( changed color to green)for cyan larger H allows more blue. If too much blue is allowed the blue floor tape is detected.
 
         // takes the values that are between lowHSV and highHSV only
         Core.inRange(mat, lowHSV, highHSV, mat);

@@ -56,7 +56,7 @@ import java.util.List;
  * is explained below.
  */
 @Autonomous(name = "8648 Carousel Blue", group = "Concept")
-//@Disabled
+@Disabled
 public class Frenzy8648AutonomousBlueCarousel extends LinearOpMode {
     Frenzy8648HardwarePushbot robot   = new Frenzy8648HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();

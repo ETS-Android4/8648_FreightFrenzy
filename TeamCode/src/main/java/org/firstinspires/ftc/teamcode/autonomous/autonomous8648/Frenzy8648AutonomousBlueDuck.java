@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode.autonomous.autonomous8648;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -54,7 +55,7 @@ import java.util.List;
  * is explained below.
  */
 @Autonomous(name = "8648 Duck Blue", group = "Concept")
-//@Disabled
+@Disabled
 public class Frenzy8648AutonomousBlueDuck extends LinearOpMode {
     Frenzy8648HardwarePushbot robot   = new Frenzy8648HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();

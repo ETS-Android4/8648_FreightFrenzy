@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.hardwarepusbots.Frenzy8648HardwarePushbot;
 
 @TeleOp(name="8648 Teleop", group="Pushbot")
-//@Disabled
+@Disabled
 public class Frenzy8648Teleop extends LinearOpMode {
     Frenzy8648HardwarePushbot robot           = new Frenzy8648HardwarePushbot();
     @Override
