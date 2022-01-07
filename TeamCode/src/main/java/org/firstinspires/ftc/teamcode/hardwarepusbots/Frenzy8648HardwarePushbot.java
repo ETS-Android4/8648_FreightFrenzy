@@ -18,6 +18,16 @@ public class Frenzy8648HardwarePushbot {
     public Servo claw = null;
     public CRServo spin = null;
     public Servo carousel = null;
+    public BNO055IMU imu = null;
+
+    public static final double     COUNTS_PER_MOTOR_REV    = 1120 ;    // eg: TETRIX Motor Encoder
+    public static final double     DRIVE_GEAR_REDUCTION    = 0.8 ;     // This is < 1.0 if geared UP
+    public static final double     WHEEL_DIAMETER_INCHES   = 6.0 ;     // For figuring circumference
+    public static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
+            (WHEEL_DIAMETER_INCHES * 3.1415);
+    public static final double     DRIVE_SPEED             = 0.4;
+    public static final double     TURN_SPEED              = 0.5;
+
 
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
@@ -27,7 +37,7 @@ public class Frenzy8648HardwarePushbot {
     }
     public void init(HardwareMap ahwMap){
         hwMap = ahwMap;
-
+        imu = hwMap.get(BNO055IMU.class, "imu");
         leftFront  = hwMap.get(DcMotor.class, "left_front");
         rightFront = hwMap.get(DcMotor.class, "right_front");
         leftBack  = hwMap.get(DcMotor.class, "left_back");

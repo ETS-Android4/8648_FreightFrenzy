@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.opencv;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
@@ -14,7 +15,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 
 @Config
 @TeleOp(name="OpenCV_Test", group="Tutorials")
-
+@Disabled
 public class OpenCV_Tutorial_Freight_Frenzy extends LinearOpMode {
 
     private OpenCvCamera webcam;

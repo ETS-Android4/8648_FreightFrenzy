@@ -32,19 +32,13 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-/*
- * This sample demonstrates how to run analysis during INIT
- * and then snapshot that value for later use when the START
- * command is issued. The pipeline is re-used from SkystoneDeterminationExample
- */
 @TeleOp
-@Disabled
+//@Disabled
 public class AutonomousInitDetectionExample extends LinearOpMode
 {
     OpenCvWebcam webcam;
     SkystoneDeterminationExample.SkystoneDeterminationPipeline pipeline;
     SkystoneDeterminationExample.SkystoneDeterminationPipeline.SkystonePosition snapshotAnalysis = SkystoneDeterminationExample.SkystoneDeterminationPipeline.SkystonePosition.LEFT; // default
-
     @Override
     public void runOpMode()
     {
@@ -54,7 +48,6 @@ public class AutonomousInitDetectionExample extends LinearOpMode
          * you should take a look at {@link InternalCamera1Example} or its
          * webcam counterpart, {@link WebcamExample} first.
          */
-
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
         pipeline = new SkystoneDeterminationExample.SkystoneDeterminationPipeline();
@@ -71,7 +64,6 @@ public class AutonomousInitDetectionExample extends LinearOpMode
             @Override
             public void onError(int errorCode) {}
         });
-
         /*
          * The INIT-loop:
          * This REPLACES waitForStart!
@@ -84,14 +76,12 @@ public class AutonomousInitDetectionExample extends LinearOpMode
             // Don't burn CPU cycles busy-looping in this sample
             sleep(50);
         }
-
         /*
          * The START command just came in: snapshot the current analysis now
          * for later use. We must do this because the analysis will continue
          * to change as the camera view changes once the robot starts moving!
          */
         snapshotAnalysis = pipeline.getAnalysis();
-
         /*
          * Show that snapshot on the telemetry
          */
@@ -118,7 +108,6 @@ public class AutonomousInitDetectionExample extends LinearOpMode
                 break;
             }
         }
-
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
         while (opModeIsActive())
         {

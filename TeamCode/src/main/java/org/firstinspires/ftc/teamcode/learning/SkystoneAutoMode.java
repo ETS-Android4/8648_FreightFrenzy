@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.enums.Alliance;
+import org.firstinspires.ftc.teamcode.enums.Barcode;
 import org.firstinspires.ftc.teamcode.enums.StartSide;
 import org.firstinspires.ftc.teamcode.learning.FreightFrenzyTSEPipeline_EXP;
 import org.openftc.easyopencv.OpenCvCamera;
@@ -13,12 +14,11 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 
-@TeleOp(name="Skystone Detecotor", group="Auto")
+@TeleOp(name="Skystone Detector", group="Auto")
 //@Disabled
 public class SkystoneAutoMode extends LinearOpMode {
     OpenCvCamera webcam;
-
-
+    FreightFrenzyTSEPipeline_EXP pipeline;
     @Override
     public void runOpMode() throws InterruptedException {
         int cameraMonitorViewId = hardwareMap.appContext
@@ -26,8 +26,9 @@ public class SkystoneAutoMode extends LinearOpMode {
                         "id", hardwareMap.appContext.getPackageName());
         webcam = OpenCvCameraFactory.getInstance()
                 .createInternalCamera(OpenCvInternalCamera.CameraDirection.FRONT, cameraMonitorViewId);
-        FreightFrenzyTSEPipeline_EXP detector = new FreightFrenzyTSEPipeline_EXP(telemetry, Alliance.BLUE, StartSide.WAREHOUSE);
-        webcam.setPipeline(detector);
+      //  FreightFrenzyTSEPipeline_EXP detector = new FreightFrenzyTSEPipeline_EXP(telemetry, Alliance.BLUE, StartSide.WAREHOUSE);
+        pipeline = new FreightFrenzyTSEPipeline_EXP(telemetry, Alliance.BLUE, StartSide.WAREHOUSE);
+        //webcam.setPipeline(detector);
         webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
         {
             @Override
@@ -39,19 +40,20 @@ public class SkystoneAutoMode extends LinearOpMode {
             @Override
             public void onError(int errorCode) {}
         });
+
         while (!isStarted() && !isStopRequested())
         {
-            telemetry.addData("Realtime analysis", detector.getLocation());
+            telemetry.addData("Realtime analysis", pipeline.getLocation());
             telemetry.update();
 
             // Don't burn CPU cycles busy-looping in this sample
             sleep(50);
         }
-
-        telemetry.addData("Snapshot post-START analysis", detector.getLocation());
+        //waitForStart();
+        telemetry.addData("Snapshot post-START analysis", pipeline.getLocation());
         telemetry.update();
 
-        switch (detector.getLocation()) {
+       switch (pipeline.getLocation()) {
             case LEFT:
                 // ...
                 break;
@@ -61,8 +63,8 @@ public class SkystoneAutoMode extends LinearOpMode {
             case RIGHT:
                 // ...
         }
-       // webcam.stopStreaming();
-        while (opModeIsActive())
+       //webcam.stopStreaming();
+       while (opModeIsActive())
         {
             // Don't burn CPU cycles busy-looping in this sample
             sleep(50);
