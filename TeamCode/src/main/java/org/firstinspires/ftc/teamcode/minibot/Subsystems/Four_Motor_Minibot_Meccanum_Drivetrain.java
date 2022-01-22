@@ -40,8 +40,6 @@ public class Four_Motor_Minibot_Meccanum_Drivetrain {
             // Note this in NOT IMU calibration.
             imu = hwMap.get(BNO055IMU.class, "imu");
 
-
-
             // initialize al the drive motors
             leftFront = hwMap.get(DcMotor.class, "Left_front");
             rightFront = hwMap.get(DcMotor.class, "Right_front");
