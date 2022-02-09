@@ -59,6 +59,7 @@ public class Frenzy8648Teleop extends LinearOpMode {
                 rb /= max;
 
             }
+
             robot.leftFront.setPower(lf);
             robot.rightFront.setPower(rf);
             robot.leftBack.setPower(lb);
@@ -91,7 +92,7 @@ public class Frenzy8648Teleop extends LinearOpMode {
          robot.armMotor.setPower(-gamepad2.right_stick_y);
 
             if (gamepad2.a)
-                robot.claw.setPosition(0.30);
+                robot.claw.setPosition(0);
             else
                 robot.claw.setPosition(0.50);
 

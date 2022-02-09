@@ -1,24 +1,25 @@
-package org.firstinspires.ftc.teamcode.autonomous.parking;
+package org.firstinspires.ftc.teamcode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardwarepusbots.Frenzy8648HardwarePushbot;
 
-@Autonomous(name = "8648 Storage Blue", group = "Concept")
-public class Frenzy8648AutoBlueStorage extends LinearOpMode {
+@Autonomous(name = "8648 Duck Storage", group = "Concept")
+@Disabled
+public class Frenzy8648AutoBlueDuckStor extends LinearOpMode {
     Frenzy8648HardwarePushbot robot = new Frenzy8648HardwarePushbot();
     private ElapsedTime runtime = new ElapsedTime();
-    public ElapsedTime  drivetime   = new ElapsedTime();
 
     @Override
-    public void runOpMode(){
+    public void runOpMode() {
         robot.init(hardwareMap, false);
-
-        telemetry.addData("Status", "Resetting Encoders");    //
+        telemetry.addData("Status", "Resetting Encoders");    //resets encoders
         telemetry.update();
+
         robot.leftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.leftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rightFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -29,32 +30,25 @@ public class Frenzy8648AutoBlueStorage extends LinearOpMode {
         robot.rightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        telemetry.addData("Path0",  "Starting at %7d :%7d",
+        telemetry.addData("Path0", "Starting at %7d :%7d :%7d :%7d",
                 robot.leftFront.getCurrentPosition(),
                 robot.leftBack.getCurrentPosition(),
                 robot.rightFront.getCurrentPosition(),
                 robot.rightBack.getCurrentPosition());
-        telemetry.update();
+        telemetry.update(); //gets current positions of encoders, should be zero
 
-        telemetry.addData(">", "Robot Ready.");
-        telemetry.update();
         telemetry.addData(">", "Press Play to start op mode");
         telemetry.update();
 
         waitForStart();
-        drivetime.reset();
-        encoderDrive(robot.TURN_SPEED, 52.0, 0.0,0.0, 52.0, 10);
-
-        sleep(2000);
-
-        telemetry.addData("Path0",  "Starting at %7d :%7d",
-                robot.leftFront.getCurrentPosition(),
-                robot.leftBack.getCurrentPosition(),
-                robot.rightFront.getCurrentPosition(),
-                robot.rightBack.getCurrentPosition());
-        telemetry.update();
-
-
+        runtime.reset();
+        //code goes here
+        //encoderDrive(robot.DRIVE_SPEED, 12, 12, 12, 12, 5);
+        //sleep(1000);
+        encoderDrive(robot.DRIVE_SPEED, 12.0, 12.0,12.0, 12.0, 5);
+        sleep(1000);
+        //encoderDrive(robot.TURN_SPEED, 17, -17, 17, -17, 8);
+        //sleep(1000);
     }
     public void encoderDrive(double speed,
                              double leftFInches, double rightFInches, double leftBInches, double rightBInches,
@@ -63,7 +57,7 @@ public class Frenzy8648AutoBlueStorage extends LinearOpMode {
         int newRightBackTarget;
         int newLeftFrontTarget;
         int newRightFrontTarget;
-
+        //create variables for new targets
         // Ensure that the opmode is still active
         if (opModeIsActive()) {
 
@@ -97,7 +91,7 @@ public class Frenzy8648AutoBlueStorage extends LinearOpMode {
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
             while (opModeIsActive() &&
                     (runtime.seconds() < timeoutS) &&
-                    (robot.leftFront.isBusy() || robot.rightFront.isBusy() || robot.rightBack.isBusy() || robot.leftBack.isBusy())) {
+                    (robot.leftFront.isBusy() && robot.leftBack.isBusy() && robot.rightBack.isBusy() && robot.rightFront.isBusy())) {
 
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to %7d :%7d :%7d :%7d", newLeftFrontTarget,  newRightFrontTarget, newLeftBackTarget, newRightBackTarget);

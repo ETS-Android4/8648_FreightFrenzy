@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.learning;
+package org.firstinspires.ftc.teamcode.learning.opencv;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -96,8 +96,8 @@ public class FreightFrenzyTSEPipeline_EXP extends OpenCvPipeline{
         }
         // Use a webcam and the GRIP software to tune these values off the robot. It will save a lot of time.
         // GRIP is a free download.
-        Scalar lowHSV = new Scalar(0, 62,  0); // for cyan smaller H allows more green
-        Scalar highHSV = new Scalar(91, 255, 140); // ( changed color to green)for cyan larger H allows more blue. If too much blue is allowed the blue floor tape is detected.
+        Scalar lowHSV = new Scalar(69, 59,  57); // for cyan smaller H allows more green
+        Scalar highHSV = new Scalar(104, 255, 179); // ( changed color to green)for cyan larger H allows more blue. If too much blue is allowed the blue floor tape is detected.
 
         // takes the values that are between lowHSV and highHSV only
         Core.inRange(mat, lowHSV, highHSV, mat);

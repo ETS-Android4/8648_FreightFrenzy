@@ -15,7 +15,7 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.enums.Alliance;
 import org.firstinspires.ftc.teamcode.enums.Barcode;
 import org.firstinspires.ftc.teamcode.enums.StartSide;
-import org.firstinspires.ftc.teamcode.learning.FreightFrenzyTSEPipeline_EXP;
+import org.firstinspires.ftc.teamcode.learning.opencv.FreightFrenzyTSEPipeline_EXP;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
@@ -26,7 +26,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
  */
 @Config
 @Autonomous(group = "Test")
-@Disabled
+
 public class AutonomousBarcodeDetection extends LinearOpMode {
 
     OpenCvCamera webcam;

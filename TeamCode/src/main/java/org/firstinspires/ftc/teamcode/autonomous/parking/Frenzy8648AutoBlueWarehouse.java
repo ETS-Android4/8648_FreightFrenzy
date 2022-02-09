@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardwarepusbots.Frenzy8648HardwarePushbot;
 
-@Autonomous(name = "8648 Storage Blue", group = "Concept")
-public class Frenzy8648AutoBlueStorage extends LinearOpMode {
+@Autonomous(name = "8648 Warehouse Blue", group = "Concept")
+public class Frenzy8648AutoBlueWarehouse extends LinearOpMode {
     Frenzy8648HardwarePushbot robot = new Frenzy8648HardwarePushbot();
     private ElapsedTime runtime = new ElapsedTime();
     public ElapsedTime  drivetime   = new ElapsedTime();
@@ -43,7 +43,10 @@ public class Frenzy8648AutoBlueStorage extends LinearOpMode {
 
         waitForStart();
         drivetime.reset();
-        encoderDrive(robot.TURN_SPEED, 52.0, 0.0,0.0, 52.0, 10);
+        robot.carousel.setPosition(0.34);
+        encoderDrive(robot.DRIVE_SPEED, 12.0, 12.0,12.0, 12.0, 10);
+        encoderDrive(robot.DRIVE_SPEED, 36.0, -36.0,36.0, -36.0, 10);
+        encoderDrive(robot.DRIVE_SPEED, -24.0, 24.0,24.0, -24.0, 10);
 
         sleep(2000);
 
@@ -97,7 +100,7 @@ public class Frenzy8648AutoBlueStorage extends LinearOpMode {
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
             while (opModeIsActive() &&
                     (runtime.seconds() < timeoutS) &&
-                    (robot.leftFront.isBusy() || robot.rightFront.isBusy() || robot.rightBack.isBusy() || robot.leftBack.isBusy())) {
+                    (robot.leftFront.isBusy() && robot.rightFront.isBusy() && robot.rightBack.isBusy() && robot.leftBack.isBusy())) {
 
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to %7d :%7d :%7d :%7d", newLeftFrontTarget,  newRightFrontTarget, newLeftBackTarget, newRightBackTarget);

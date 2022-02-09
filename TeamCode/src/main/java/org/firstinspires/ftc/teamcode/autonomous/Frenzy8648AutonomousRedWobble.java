@@ -55,7 +55,7 @@ import java.util.List;
  * is explained below.
  */
 @Autonomous(name = "8648 Wobble Red", group = "Concept")
-//@Disabled
+@Disabled
 public class Frenzy8648AutonomousRedWobble extends LinearOpMode {
     Frenzy8648HardwarePushbot robot   = new Frenzy8648HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime runtime = new ElapsedTime();
