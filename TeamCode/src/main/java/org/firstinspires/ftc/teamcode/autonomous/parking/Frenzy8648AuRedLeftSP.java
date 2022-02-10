@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardwarepusbots.Frenzy8648HardwarePushbot;
 
-@Autonomous(name = "8648 Storage Blue", group = "Concept")
-public class Frenzy8648AutoBlueStorage extends LinearOpMode {
+@Autonomous(name = "8648 Red Left SP", group = "Concept")
+public class Frenzy8648AuRedLeftSP extends LinearOpMode {
     Frenzy8648HardwarePushbot robot = new Frenzy8648HardwarePushbot();
     private ElapsedTime runtime = new ElapsedTime();
     public ElapsedTime  drivetime   = new ElapsedTime();
@@ -43,8 +43,7 @@ public class Frenzy8648AutoBlueStorage extends LinearOpMode {
 
         waitForStart();
         drivetime.reset();
-        encoderDrive(robot.TURN_SPEED, 52.0, 0.0,0.0, 52.0, 10);
-
+        encoderDrive(robot.TURN_SPEED, 0.0, 52.0,52.0, 0.0, 10);
         sleep(2000);
 
         telemetry.addData("Path0",  "Starting at %7d :%7d",

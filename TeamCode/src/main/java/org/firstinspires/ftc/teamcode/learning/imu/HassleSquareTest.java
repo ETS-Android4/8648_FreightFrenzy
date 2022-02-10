@@ -2,11 +2,12 @@ package org.firstinspires.ftc.teamcode.learning.imu;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.minibot.Autonomous.BasicMiniBotMeccanum;
 
 @Autonomous(name="Hassle Square Drive", group="Auto")
-//@Disabled
+@Disabled
 
 // This opMode uses the encodes and the IMU to move the robot in a square pattern.
 // Copy this opmode, rename and edit the dyroDrive and gyroTurn lines to create

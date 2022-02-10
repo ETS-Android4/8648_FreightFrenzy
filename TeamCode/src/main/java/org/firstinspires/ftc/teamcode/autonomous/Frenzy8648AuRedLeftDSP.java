@@ -1,16 +1,15 @@
 package org.firstinspires.ftc.teamcode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.hardwarepusbots.Frenzy8648HardwarePushbot;
 
-@Autonomous(name = "8648 Duck Storage", group = "Concept")
-@Disabled
-public class Frenzy8648AutoBlueDuckStor extends LinearOpMode {
+@Autonomous(name = "8648 Red Left DSP", group = "Concept")
+//@Disabled
+public class Frenzy8648AuRedLeftDSP extends LinearOpMode {
     Frenzy8648HardwarePushbot robot = new Frenzy8648HardwarePushbot();
     private ElapsedTime runtime = new ElapsedTime();
 
@@ -43,12 +42,24 @@ public class Frenzy8648AutoBlueDuckStor extends LinearOpMode {
         waitForStart();
         runtime.reset();
         //code goes here
-        //encoderDrive(robot.DRIVE_SPEED, 12, 12, 12, 12, 5);
-        //sleep(1000);
-        encoderDrive(robot.DRIVE_SPEED, 12.0, 12.0,12.0, 12.0, 5);
+        encoderDrive(robot.DRIVE_SPEED, 6.0, 6.0,6.0, 6.0, 3);
         sleep(1000);
-        //encoderDrive(robot.TURN_SPEED, 17, -17, 17, -17, 8);
-        //sleep(1000);
+        encoderDrive(robot.TURN_SPEED, -21, 21, -21, 21, 7);
+        sleep(1000);
+        robot.carousel.setPosition(0.34);
+        sleep(1000);
+        encoderDrive(robot.DRIVE_SPEED, 19.5, 19.5,19.5, 19.5,  7);
+        robot.spin.setPower(-1);
+        sleep(4000);
+        robot.spin.setPower(0);
+        robot.carousel.setPosition(0.65);
+        sleep(2000);
+        encoderDrive(robot.TURN_SPEED, 6, -6, -6, 6, 6);
+        encoderDrive(robot.DRIVE_SPEED, 8.0, 8.0,8.0, 8.0, 5);
+        encoderDrive(robot.TURN_SPEED, 12, -12, -12, 12, 6);
+
+
+
     }
     public void encoderDrive(double speed,
                              double leftFInches, double rightFInches, double leftBInches, double rightBInches,
@@ -91,14 +102,14 @@ public class Frenzy8648AutoBlueDuckStor extends LinearOpMode {
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
             while (opModeIsActive() &&
                     (runtime.seconds() < timeoutS) &&
-                    (robot.leftFront.isBusy() && robot.leftBack.isBusy() && robot.rightBack.isBusy() && robot.rightFront.isBusy())) {
+                    (robot.leftFront.isBusy() || robot.rightFront.isBusy() && robot.leftBack.isBusy() || robot.rightBack.isBusy())) {
 
                 // Display it for the driver.
                 telemetry.addData("Path1",  "Running to %7d :%7d :%7d :%7d", newLeftFrontTarget,  newRightFrontTarget, newLeftBackTarget, newRightBackTarget);
                 telemetry.addData("Path2",  "Running at %7d :%7d :%7d :%7d",
                         robot.leftFront.getCurrentPosition(),
-                        robot.leftBack.getCurrentPosition(),
                         robot.rightFront.getCurrentPosition(),
+                        robot.leftBack.getCurrentPosition(),
                         robot.rightBack.getCurrentPosition());
 
                 telemetry.update();

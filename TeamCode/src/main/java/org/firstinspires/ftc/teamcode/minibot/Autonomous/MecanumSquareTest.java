@@ -22,7 +22,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
 
 @Autonomous(name="Mecanum Square Drive and Servo Test", group="Auto")
-//@Disabled
+@Disabled
 
 // This opMode uses the encodes and the IMU to move the robot in a square pattern.
 // Copy this opmode, rename and edit the dyroDrive and gyroTurn lines to create
